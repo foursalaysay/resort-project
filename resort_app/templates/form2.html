@@ -1,0 +1,164 @@
+<!-- reservation.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coal Mountain Resort</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form-coal.css' %}">
+</head>
+<body style="background-image: url({% static 'images/form-coal.jpg' %});">
+    <div class="form-container">
+        <h1>Secure Your Perfect Getaway Today!</h1>
+        <form id="reservation-form"  action="{% url 'reservation_submit2' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="contact-number">Contact Number:</label>
+                    <input type="tel" id="contact-number" name="contact-number" required>
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="check-in-date">Check-in Date:</label>
+                    <input type="date" id="check-in-date" name="check-in-date" required>
+                </div>
+                <div class="input-group">
+                    <label for="check-out-date">Check-out Date:</label>
+                    <input type="date" id="check-out-date" name="check-out-date" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="number-of-guests">Number of Guests:</label>
+                    <input type="number" id="number-of-guests" name="number-of-guests" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="room-type">Room Type:</label>
+                    <div class="room-type-grid">
+                        <label for="standard-room">
+                            <input type="checkbox" id="standard-room" name="room-type" value="Standard Room" data-price="2000"> Standard Room (Aircon) Php2000
+                        </label>
+                        <label for="standard-room">
+                            <input type="checkbox" id="standard-room" name="room-type" value="Standard Room" data-price="2500"> Standard Room (Aircon) Php2500
+                        </label>
+                        <label for="deluxe-room">
+                            <input type="checkbox" id="deluxe-room" name="room-type" value="Deluxe Room" data-price="3000"> Deluxe Room (Aircon) Php3000
+                        </label>
+                        <label for="twin-beds">
+                            <input type="checkbox" id="twin-beds" name="room-type" value="2 Twin Beds" data-price="1000"> 2 Twin Beds (Non-Aircon) Php1000
+                        </label>
+                        <label for="twin-beds">
+                            <input type="checkbox" id="twin-beds" name="room-type" value="2 Twin Beds" data-price="1200"> 2 Twin Beds (Non-Aircon) Php1200
+                        </label>
+                        <label for="twin-beds">
+                            <input type="checkbox" id="twin-beds" name="room-type" value="2 Twin Beds" data-price="1500"> 2 Twin Beds (Non-Aircon) Php1500
+                        </label>
+                        <label for="shared-bed">
+                            <input type="checkbox" id="shared-bed" name="room-type" value="Shared Bed" data-price="1500"> Shared Bed (Non-Aircon) Php1500
+                        </label>
+                        <label for="bahay-kubo">
+                            <input type="checkbox" id="bahay-kubo" name="room-type" value="Bahay Kubo" data-price="1000"> <i>Bahay Kubo</i> (Non-Aircon) Php1000
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="mode-of-payment">Mode of Payment:</label>
+                    <select id="mode-of-payment" name="mode-of-payment" required>
+                        <option value="">Select Payment Mode</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Gcash">Gcash</option>
+                        <option value="Credit Card">Credit Card</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="total-amount">Total Amount:</label>
+                    <input type="text" id="total-amount" name="total-amount" readonly>
+                </div>
+            </div>
+            <div class="form-grid">
+                <input type="submit" value="Reserve">
+                <a href="{% url 'resort_2' %}">Cancel Reservation</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("reservation-form");
+        const checkInDateInput = document.getElementById("check-in-date");
+        const checkOutDateInput = document.getElementById("check-out-date");
+        const roomTypeInputs = document.querySelectorAll('input[name="room-type"]');
+        const totalAmountInput = document.getElementById("total-amount");
+
+        function calculateTotalAmount() {
+            const checkInDate = new Date(checkInDateInput.value);
+            const checkOutDate = new Date(checkOutDateInput.value);
+
+            const currentDate = new Date(); // Get the current date
+
+            if (checkInDate < currentDate || checkOutDate < currentDate) {
+                // If either check-in or check-out date is in the past
+                alert("Invalid date selection. Please choose dates from the present or future.");
+                return;
+            }
+
+            if (checkOutDate <= checkInDate) {
+                // If check-out date is before or the same as check-in date
+                alert("Invalid date selection. Check-out date should be after the check-in date.");
+                return;
+            }
+
+            let totalPrice = 0;
+
+            roomTypeInputs.forEach(function (roomTypeInput) {
+                if (roomTypeInput.checked) {
+                    const price = parseFloat(roomTypeInput.getAttribute("data-price"));
+                    totalPrice += price;
+                }
+            });
+
+            const numberOfNights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+            const totalAmount = totalPrice * numberOfNights;
+
+            if (Number.isNaN(totalAmount)) {
+                totalAmountInput.value = '';
+            } else {
+                totalAmountInput.value = totalAmount.toFixed(2);
+            }
+        }
+
+        checkInDateInput.addEventListener("change", calculateTotalAmount);
+        checkOutDateInput.addEventListener("change", calculateTotalAmount);
+        roomTypeInputs.forEach(function (roomTypeInput) {
+            roomTypeInput.addEventListener("change", calculateTotalAmount);
+        });
+
+        calculateTotalAmount();
+
+       
+    </script>
+</body>
+</html>

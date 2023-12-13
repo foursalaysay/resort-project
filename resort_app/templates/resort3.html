@@ -1,0 +1,190 @@
+<!-- resorts.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resorts</title>
+    <link rel="stylesheet" href="{% static 'css/resort3.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <script src="{% static 'js/resort3.js' %}"></script>
+    {% if success_message %}
+    <script>
+        alert("{{ success_message }}");
+    </script>
+{% endif %}
+
+    <div class="resort1" id="resort1">
+        <!-- SECTION 1 -->
+        <!-- SOCIAL MEDIA WITH TITLE -->
+        <div class="section-1">
+            <div class="social">
+                <img src="{% static 'images/facebook.png' %}" alt="">
+                <img src="{% static 'images/twitter.png' %}" alt="">
+                <img src="{% static 'images/ig.png' %}" alt="">
+            </div>
+            <div class="resort-name">
+                <h1>Viking Paradis Jampang Hill Resort</h1>
+            </div>
+            <div class="return-button">
+                <a href="{% url 'home' %}"><button type="button">Back</button></a>
+            </div>
+        </div>
+        <!-- SECTION 1 -->
+
+        <!-- SECTION 2 -->
+        <!-- IMAGES WITH INTRO -->
+        <div class="section-2">
+            <div class="image" style="background-image: url({% static 'images/viking-cover.jpg' %});"></div>
+            <div class="text">
+                  
+                <h1>Hungering for <span>Peak</span> Escapes?</h1>
+                <p>"Embark on a Journey to Serene Mountain Heights at our Scenic Nature Getaway!"</p>
+                <a href="{% url 'form_3' %}"><button type="button" >Reserve Now</button></a>
+            </div>
+        </div>
+        <!-- SECTION 2 -->
+
+         <!-- SECTION 3 -->
+         <div class="section-3">
+            <div class="image">
+                <img src="{% static 'images/viking4.jpg' %}" alt="">
+            </div>
+            <div class="about-info">
+                <h2>About Us</h2>
+                <p>The property nests over a sea of trees that stretch as far as <br>
+                    the eye can see. From the resort, treetops of palm and many  <br>
+                    kinds of trees fill the view, making the vista a collage of <br>
+                    rich greens. Just a little bit over the edge of the tree line,<br>
+                     the view opens up to the sea with the faint silhouette of Bohol <br>
+                    Island – what a sight.<br></p>
+            </div>
+         </div>
+         <!-- SECTION 3 -->
+
+         <!-- SECTION 4 -->
+         <div class="section-4">
+            <div class="title">
+                <h1>Facilities and Services</h1>
+            </div>
+            <div class="services-info">
+                <div class="service">
+                    <img src="{% static 'images/viking1.jpg' %}" alt="">
+                    <h4>Blissful Peaks</h4>
+                    <p>"Serene Haven amidst a Verdant Sea of Trees: Unwind at our Mountain Resort!"</p>
+                    
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/viking2.jpg' %}" alt="">
+                    <h4>Mountain Solitude</h4>
+                    <p>"Nature's Canvas Unveiled: Experience the Breathtaking Vista at our Mountain Retreat!"</p>
+                    <button type="button" onclick="openForm()">Reservation Fees</button>
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/viking3.jpg' %}" alt="">
+                    <h4>Scenic Getaway</h4>
+                    <p>"Captivating Views of Nature's Tapestry: Indulge in the Beauty of our Mountain Getaway!"</p>
+                    
+                </div>
+            </div>
+         </div>
+         <!-- SECTION 4 -->
+
+        <!-- SECTION 5 -->
+        <div class="section-5" id="map-container">
+            <div class="location">
+                <h1>Our Location</h1>
+                <p><i class="material-icons">phone</i> &nbsp;&nbsp; 09468614192</p>
+             <p><svg xmlns="http://www.w3.org/2000/svg" margin-top="-10px" x="0px" y="px" width="30" height="30" viewBox="0 0 50 50">
+               <path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"></path>
+           </svg> &nbsp;Viking Paradis Jampang Hill Resort</p>
+             <p><i class="material-icons">directions</i>  &nbsp;&nbsp;Candabong Eskina, Jampang, Argao</p>
+                <a href="https://www.google.com/maps/place/Viking+Paradis+Jampang+Hill+Resort/@9.9137481,123.5894897,15z/data=!4m6!3m5!1s0x33abc53fea84adf5:0xf32859fb96eaf5ce!8m2!3d9.9130227!4d123.596387!16s%2Fg%2F11p01q8yzs?entry=ttu"><button type="button">Location</button></a>
+            </div>
+                <img src="{% static 'images/viking-location.JPG' %}" alt="">
+        </div>
+        <!-- SECTION 5 -->
+
+         <!-- SECTION 6 -->
+         <div class="section-6">
+            <div class="part-1">
+                <h1>Engage with us</h1>
+                <p>"Seeking information about our resort or ready to <br> share your impressions?
+                     We welcome your messages!"</p>
+            </div>
+            <div class="part-2">
+                <form method="POST" action="{% url 'submit_form3' %}">
+                    {% csrf_token %}
+                    <div class="name">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>                
+            </div>
+         </div>
+          <!-- SECTION 6 -->
+
+          <!-- FOOTER -->
+          <div class="footer">
+            <div class="first-column">
+              
+            </div>
+            <div class="second-column">
+                <!-- IMAGES TO PARTNERSHIPS LOGOS OF ARGAO  -->
+                <img src="{% static 'images/argao1.png' %}" alt="">
+                <img src="{% static 'images/argao2.png' %}" alt="">
+                <img src="{% static 'images/argao3.png' %}" alt="">
+            </div>
+            <div class="third-column">
+                
+            </div>
+          </div>
+        <!-- FOOTER -->
+
+        <!-- DIALOG MORE INFORMATION -->
+
+
+        <!-- DIALOG MORE INFORMATION -->
+        <div id="dialogForm" class="dialog-form">
+            <div class="header">
+                <h2>Booking Fees and Charges</h2>
+               <button onclick="closeForm()"><img src="{% static 'images/exit.svg' %}" alt=""></button>
+            </div>
+            <div class="info">
+                <h5>Rates and Other Information</h5>
+             <p>DAY USE: <br>
+              • Open hours: 9AM to 2PM; 2PM to 7PM <br> <br>
+              <em>Entrance fees:</em>  <br><br>
+              • Adults and children 11 years above: ₱100 <br>
+              • Children 3 to 10 years old: ₱50 per person <br> <br>
+              <em>Cottage Rates:</em>  <br><br>
+              • Cottage rental: ₱300 each <br>
+              • Outdoor table and chair with umbrella: ₱300</p> 
+            </div>
+           
+          </div>
+        
+        <!-- DIALOG MORE INFORMATION -->
+
+    </div>
+</body>
+</html>

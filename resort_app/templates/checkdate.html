@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Date</title>
+    <link rel="stylesheet" href="checkdate.css">
+</head>
+<body>
+    <script src="checkdate.js"></script>
+    <button class="card-button" onclick="openDialog()">Book Now</button>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <h1>Reservation Dates</h1>
+            <form onsubmit="event.preventDefault(); validateForm();">
+                <label for="check-in">Check-in Date:</label>
+                <input type="date" id="check-in" required><br><br>
+                <label for="check-out">Check-out Date:</label>
+                <input type="date" id="check-out" required><br><br>
+                <button type="submit">Check Availability</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

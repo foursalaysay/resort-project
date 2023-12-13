@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Home</title>
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% endblock css %}
+</head>
+
+<body>
+    {% block scripts %}
+    <script src="{% static 'js/landing.js' %}"></script>
+    {% endblock scripts %}
+    {% block content %}
+    <!-- HEADER -->
+    <div class="home-container">
+        <div class="container">
+            <div class="inner-container" onscroll="scrollImage(event)">
+                <img src="{% static 'images/sample.jpg' %}" alt="Scrolling Image" id="scrolling-image">
+            </div>
+        </div>
+        
+        <div class="header-text">
+            <h1>Enjoy your finest moments.</h1>
+        </div>
+    </div>
+    <!-- HEADER -->
+
+    <!-- CAROUSEL -->
+    <div class="resort-carousel-container" style="background-image: url({% static 'images/background.jpg' %});">
+        <div class="carousel">
+            <div class="carousel-container">  
+                <!-- RESORT 1 -->
+                <div class="carousel-card">
+                    <div class="carousel-info">
+                        <img src="{% static 'images/jsjs.jpg' %}" alt="image">
+                        <div class="info">
+                            <h1>Feel the Breeze</h1>
+                            <p>Breathtaking Vistas <br>
+                            Luxurious Comfort<br>
+                            Thrilling Excursions<br>
+                            Serene Retreat<br>
+                            Culinary Delights<br>
+                            Resort Luxuries<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-label">JSJS Mountain Resort</h3>
+                        <a href="{% url 'form_1' %}"><button type="button"  class="card-button">Book Now</button></a>
+                    </div> 
+                    <div class="detail-button">
+                        <a href="{% url 'resort_1' %}"><button type="button">See Details</button></a>
+                        <a href="https://www.google.com/maps/place/JSJS+Mountain+Resort/@9.8588451,123.5623922,15z/data=!4m2!3m1!1s0x0:0xa0545659335e2eca?sa=X&ved=2ahUKEwj7kYme7bz_AhUibGwGHY3rAWgQ_BJ6BAgtEAc"><img src="{% static 'images/location.png' %}" alt="location"></a>
+                    </div>
+                </div>
+                <!-- RESORT 2 -->
+                <div class="carousel-card">
+                    <div class="carousel-info">
+                        <img src="{% static 'images/coal-cover.jpg' %}" alt="image">
+                        <div class="info">
+                            <h1>Mountain Escape</h1>
+                            <p>Majestic Peaks <br>
+                            Cozy Retreat <br>
+                            Adventurous Thrills<br>
+                            Tranquil Spa<br>
+                            Exquisite Cuisine<br>
+                            Resort Paradise<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-label">Coal Mountain Resort</h3>
+                        <a href="{% url 'form_2' %}"><button type="button"  class="card-button">Book Now</button></a>
+                    </div>
+                    <div class="detail-button">
+                        <a href="{% url 'resort_2' %}"><button type="button">See Details</button></a>
+                        <a href="https://www.google.com/maps/place/Coal+Mountain+Resort/@9.8896945,123.4926121,15z/data=!4m2!3m1!1s0x0:0x3c5a0a4c845a1345?sa=X&ved=2ahUKEwi0uajd273_AhWy8jgGHfIYAzIQ_BJ6BAgmEAc"><img src="{% static 'images/location.png' %}" alt="location"></a>
+                    </div>
+                </div>
+                <!-- RESORT 3 -->
+                <div class="carousel-card">
+                    <div class="carousel-info">
+                        <img src="{% static 'images/viking-cover.jpg' %}" alt="image">
+                        <div class="info">
+                            <h1>Hillside Sanctuary</h1>
+                            <p>Panoramic Scenery <br>
+                            Rustic Charm<br>
+                            Outdoor Bliss<br>
+                            Relaxing Spa<br>
+                            Gastronomic Delights<br>
+                            Resort Oasis<br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-label">Vikings Paradise Resort</h3>
+                        <a href="{% url 'form_3' %}"><button type="button"  class="card-button">Book Now</button></a>
+                    </div>
+                    <div class="detail-button">
+                        <a href="{% url 'resort_3' %}"><button type="button">See Details</button></a>
+                        <a href="https://www.google.com/maps/place/Viking+Paradis+Jampang+Hill+Resort/@9.9137481,123.5894897,15z/data=!4m6!3m5!1s0x33abc53fea84adf5:0xf32859fb96eaf5ce!8m2!3d9.9130227!4d123.596387!16s%2Fg%2F11p01q8yzs?entry=ttu"><img src="{% static 'images/location.png' %}" alt="location"></a>
+                    </div>
+                </div>
+                <!-- RESORT 4 -->
+                <div class="carousel-card">
+                    <div class="carousel-info">
+                        <img src="{% static 'images/water-terraces.jpg' %}" alt="image">
+                        <div class="info">
+                            <h1>Mountain Hideaway</h1>
+                            <p>Mountain Majesty <br>
+                            Cosy Haven <br>
+                            Nature's Thrills <br>
+                            Serene Wellness <br>
+                            Epicurean Delights <br>
+                            Resort Oasis <br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-label">Water Terraces Resort</h3>
+                        <a href="{% url 'form_4' %}"><button type="button"  class="card-button">Book Now</button></a>
+                    </div>
+                    <div class="detail-button">
+                        <a href="{% url 'resort_4' %}"><button type="button">See Details</button></a>
+                        <a href="https://www.google.com/maps/place/Ka+Treasure+Water+Terraces+Mountain+Resort/@9.8903281,123.5519905,14z/data=!4m6!3m5!1s0x33abc51d3fd13575:0x23c715c7282b9019!8m2!3d9.8945347!4d123.5434503!16s%2Fg%2F11q8wftgrl?entry=ttu"><img src="{% static 'images/location.png' %}" alt="location"></a>
+                    </div>
+                </div>
+                <!-- Repeat the structure for the other cards -->
+            </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="carousel-controls">
+            <button id="prevButton" class="carousel-btn prev-btn" style="background-image: url({% static 'images/left.png' %});"></button>
+            <button id="nextButton" class="carousel-btn next-btn" style="background-image: url({% static 'images/right.png' %});"></button>
+        </div>
+    </div>
+    <!-- CAROUSEL -->
+
+    <div class="footer">
+        <div class="first-column">
+        </div>
+        <div class="second-column">
+            <!-- IMAGES TO PARTNERSHIPS LOGOS OF ARGAO  -->
+            <img src="{% static 'images/argao1.png' %}" alt="">
+            <img src="{% static 'images/argao2.png' %}" alt="">
+            <img src="{% static 'images/argao3.png' %}" alt="">
+        </div>
+        <div class="third-column">
+            
+        </div>
+    </div>
+
+    <!-- RESERVATION DATE DIALOG -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <h1>Reservation Dates</h1>
+            <form onsubmit="event.preventDefault(); validateForm();">
+                <label for="check-in">Check-in Date:</label>
+                <input type="date" id="check-in" placeholder="Date" required><br><br>
+                <label for="check-out">Check-out Date:</label>
+                <input type="date" id="check-out" placeholder="Date"><br><br>
+                <button type="submit">Reserve</button>
+            </form>
+        </div>
+    </div>
+    {% endblock content %}
+    <!-- RESERVATION DATE DIALOG -->
+</body>
+
+</html>

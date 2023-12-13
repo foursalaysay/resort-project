@@ -1,0 +1,148 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikings Paradise</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form-viking.css' %}">
+</head>
+<body style="background-image: url({% static 'images/viking-cover.jpg' %});">
+    <div class="form-container">
+        <h1>Secure Your Perfect Getaway Today!</h1>
+        <form id="reservation-form" action="{% url 'reservation_submit3' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="contact-number">Contact Number:</label>
+                    <input type="tel" id="contact-number" name="contact-number" required>
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+            </div>
+            
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="cottage-type">Cottage Rental:</label>
+                    <div class="cottage-type-grid">
+                        <label for="cottage">
+                            <input type="checkbox" id="cottage" name="cottage-type" value="Cottage" data-price="300"> Cottage (Php300)
+                        </label>
+                        <label for="table-chair">
+                            <input type="checkbox" id="table-chair" name="cottage-type" value="Table and Chair" data-price="300"> Outdoor Table and Chair with Umbrella (Php300)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="mode-of-payment">Mode of Payment:</label>
+                    <select id="mode-of-payment" name="mode-of-payment" required>
+                        <option value="">Select Payment Mode</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Gcash">Gcash</option>
+                        <option value="Credit Card">Credit Card</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="total-amount">Total Amount:</label>
+                    <input type="text" id="total_amount" name="total_amount" readonly>
+                </div>
+            </div>
+            <div class="form-grid">
+                <input type="submit" value="Reserve">
+                <a href="{% url 'resort_3' %}">Cancel Reservation</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[name="cottage-type"]');
+const totalAmountField = document.getElementById('total_amount');
+
+checkboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', updateTotalAmount);
+});
+
+function updateTotalAmount() {
+  let totalAmount = 0;
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      const price = parseFloat(checkbox.getAttribute('data-price'));
+      totalAmount += price;
+    }
+  });
+  totalAmountField.value = totalAmount.toFixed(2);
+}
+
+ // Get form element and input fields
+ const form = document.getElementById('reservation-form');
+ const fullNameInput = document.getElementById('full-name');
+ const emailInput = document.getElementById('email');
+ const contactNumberInput = document.getElementById('contact-number');
+ const addressInput = document.getElementById('address');
+
+ // Add submit event listener to the form
+ form.addEventListener('submit', function(event) {
+     // Validate each input field
+     if (fullNameInput.value === '') {
+         event.preventDefault();
+         alert('Please enter your full name.');
+         fullNameInput.classList.add('invalid');
+     }
+
+     if (emailInput.value === '') {
+         event.preventDefault();
+         alert('Please enter your email.');
+         emailInput.classList.add('invalid');
+     }
+
+     if (contactNumberInput.value === '') {
+         event.preventDefault();
+         alert('Please enter your contact number.');
+         contactNumberInput.classList.add('invalid');
+     }
+
+     if (addressInput.value === '') {
+         event.preventDefault();
+         alert('Please enter your address.');
+         addressInput.classList.add('invalid');
+     }
+ });
+
+ // Add input event listeners to remove invalid class on input change
+ fullNameInput.addEventListener('input', function() {
+     fullNameInput.classList.remove('invalid');
+ });
+
+ emailInput.addEventListener('input', function() {
+     emailInput.classList.remove('invalid');
+ });
+
+ contactNumberInput.addEventListener('input', function() {
+     contactNumberInput.classList.remove('invalid');
+ });
+
+ addressInput.addEventListener('input', function() {
+     addressInput.classList.remove('invalid');
+ });
+
+    </script>
+</body>
+</html>

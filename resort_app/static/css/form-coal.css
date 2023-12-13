@@ -1,0 +1,127 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh;
+    background: url(coal.jpg);
+    background-repeat: no repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+  }
+  
+  .form-container {
+    width: 900px;
+    padding: 20px;
+    background: linear-gradient(to bottom,  rgb(167, 213, 250, 0.9), rgba(152, 246, 194, 0.7));
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 115vh;
+    font-style: italic;
+
+  }
+  
+  .form-container h1 {
+    margin-top: 0;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-family: cursive;
+
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .form-grid label {
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 12px;
+  }
+  
+  .form-grid input,
+  .form-grid input[type="submit"],
+  .form-grid select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  .form-grid input[type="submit"] {
+    width: auto;
+    padding: 10px 30px;
+    margin-top: 25px; 
+    background-color: #1a421b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 18px;
+  }
+  .form-grid a {
+    width: auto;
+    padding: 10px 40px;
+    margin-top: 25px; 
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+}
+
+  .form-grid .extra{
+    width: auto;
+    padding: 10px 40px;
+    margin-top: 25px; 
+    background-color: white#4CAF50;
+    color: white;
+    border: none;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .form-grid input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  .form-grid .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .room-type-grid {
+    display: flex;
+    flex-direction: column;
+    margin-left: -300px;
+  }
+  
+  .room-type-grid label {
+    display: flex;
+    align-items: center;
+    font-size: 12px; 
+  }
+  
+  .room-type-grid input[type="checkbox"] {
+    margin-right: -340px;
+  }

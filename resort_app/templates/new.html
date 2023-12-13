@@ -1,0 +1,184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resorts</title>
+    <link rel="stylesheet" href="{% static 'css/new.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <script src="{% static 'js/new.js' %}"></script>
+    {% if success_message %}
+    <script>
+        alert("{{ success_message }}");
+    </script>
+    {% endif %}
+
+    <div class="resort1" id="resort1">
+        <!-- SECTION 1 -->
+        <!-- SOCIAL MEDIA WITH TITLE -->
+        <div class="section-1">
+            <div class="social">
+                <img src="{% static 'images/facebook.png' %}" alt="">
+                <img src="{% static 'images/twitter.png' %}" alt="">
+                <img src="{% static 'images/ig.png' %}" alt="">
+            </div>
+            <div class="resort-name">
+                <h1>JSJS Mountain Resort</h1>
+            </div>
+            <div class="return-button">
+                <a href="{% url 'home' %}"><button type="button">Back</button></a>
+            </div>
+        </div>
+        <!-- SECTION 1 -->
+
+        <!-- SECTION 2 -->
+        <!-- IMAGES WITH INTRO -->
+        <div class="section-2">
+            <div class="image" style="background-image: url({% static 'images/background.jpg' %});" ></div>
+            <div class="text">
+                <h1>Seeking <span>Serene</span> Peaks?</h1>
+                <p>"Reach New Heights of Adventure and Relaxation at our Mountain Haven!"</p>
+                <a href="{% url 'form_1' %}"><button type="button" >Reserve Now</button></a>
+            </div>
+        </div>
+        <!-- SECTION 2 -->
+
+         <!-- SECTION 3 -->
+         <div class="section-3">
+            <div class="image">
+                <img src="{% static 'images/jsjs4.jpg' %}" alt="">
+            </div>
+            <div class="about-info">
+                <h2>About Us</h2>
+                <p>If you’re looking for a scenic mountain resort and won’t mind <br>
+                    too much to travel 2-3 hours from the hustle and bustle of the city,<br>
+                    read on. Situated at the high grounds of Argao. Overlooking the sea<br>
+                    between Bohol and Cebu Islands, the JSJS Mountain Resort is place<br>
+                    where it has a pleasant environment and atmosphere — perfect for your<br>
+                    comfort, relaxation and rest.</p>
+            </div>
+         </div>
+         <!-- SECTION 3 -->
+
+         <!-- SECTION 4 -->
+         <div class="section-4">
+            <div class="title">
+                <h1>Facilities and Services</h1>
+            </div>
+            <div class="services-info">
+                <div class="service">
+                    <img src="{% static 'images/jsjs1.jpg' %}" alt="">
+                    <h4>Alpine Haven</h4>
+                    <p>"Escape to Scenic Serenity: JSJS Mountain Resort, <br> your tranquil getaway."</p>
+                    
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/jsjs2.jpg' %}" alt="">
+                    <h4>Mountain Oasis</h4>
+                    <p>"Unwind in Nature's Embrace: JSJS Mountain Resort, <br> where sea and mountain meet."</p>
+                    <button type="button" onclick="openForm()">Reservation Fees</button>
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/jsjs3.jpg' %}" alt="">
+                    <h4>Peak Escape</h4>
+                    <p>"Discover Blissful Retreat: JSJS Mountain Resort, <br> the perfect sanctuary for relaxation."</p>
+                    
+                </div>
+            </div>
+         </div>
+         <!-- SECTION 4 -->
+
+        <!-- SECTION 5 -->
+        <div class="section-5" id="map-container">
+            <div class="location">
+                <h1>Our Location</h1>
+                <p><i class="material-icons">phone</i>   0923 285 1128</p>
+              <p><i class="material-icons">mail</i>  jsjsmountainresortmngmt@gmail.com </p>
+              <p><i class="material-icons">directions</i>   Dob-dob, Talaga, Argao</p>
+                <a href="https://www.google.com/maps/place/JSJS+Mountain+Resort/@9.8588451,123.5623922,15z/data=!4m2!3m1!1s0x0:0xa0545659335e2eca?sa=X&ved=2ahUKEwj7kYme7bz_AhUibGwGHY3rAWgQ_BJ6BAgtEAc"><button type="button">Location</button></a>
+            </div>
+                <img src="{% static 'images/location1.JPG' %}" alt="">
+        </div>
+        <!-- SECTION 5 -->
+
+         <!-- SECTION 6 -->
+         <div class="section-6">
+            <div class="part-1">
+                <h1>Drop us a line</h1>
+                <p>"Have a question or want to share your thoughts about our resort? <br>
+                        We're all ears! Send us a message today!"</p>
+            </div>
+            <div class="part-2">
+                <form method="POST" action="{% url 'submit_form1' %}">
+                    {% csrf_token %}
+                    <div class="name">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+         </div>
+          <!-- SECTION 6 -->
+
+          <!-- FOOTER -->
+          <div class="footer">
+            <div class="first-column">
+              
+            </div>
+            <div class="second-column">
+                <!-- IMAGES TO PARTNERSHIPS LOGOS OF ARGAO  -->
+                <img src="{% static 'images/argao1.png' %}" alt="">
+                <img src="{% static 'images/argao2.png' %}" alt="">
+                <img src="{% static 'images/argao3.png' %}" alt="">
+            </div>
+            <div class="third-column">
+                
+            </div>
+          </div>
+        <!-- FOOTER -->
+
+        <!-- DIALOG MORE INFORMATION -->
+
+
+        <!-- DIALOG MORE INFORMATION -->
+        <div id="dialogForm" class="dialog-form">
+            <div class="header">
+                <h2>Booking Fees and Charges</h2>
+               <button onclick="closeForm()"><img src="{% static 'images/exit.svg' %}" alt=""></button>
+            </div>
+            <div class="info">
+                <h5>Room Rates:</h5>
+                <p>• Dorm Room for 10pax: P4,990 / night <br>
+                • Standard Room for 4pax: P3,300 / night <br>
+                • Standard Room for 2pax: P2,000 / night</p>
+                <h5>Inclusions:</h5>
+                <p>Free entrance fees, free breakfast set meals <br>
+                   and free use of resort facilities. <br>
+                   All rooms have airconditioning system, TV</p>
+            </div>
+           
+          </div>
+        
+        <!-- DIALOG MORE INFORMATION -->
+
+    </div>
+</body>
+</html>

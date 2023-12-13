@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{% load static %}  <!-- Load the static template tag -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resorts</title>
+    <link rel="stylesheet" href="{% static 'css/resort4.css' %}">  <!-- Link to the CSS file using the static template tag -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <script src="{% static 'js/resort4.js' %}"></script> 
+    {% if success_message %}
+    <script>
+        alert("{{ success_message }}");
+    </script>
+{% endif %}
+
+    <div class="resort1" id="resort1">
+        <!-- SECTION 1 -->
+        <!-- SOCIAL MEDIA WITH TITLE -->
+        <div class="section-1">
+            <div class="social">
+                <img src="{% static 'images/facebook.png' %}" alt="">  <!-- Link to the image using the static template tag -->
+                <img src="{% static 'images/twitter.png' %}" alt="">  <!-- Link to the image using the static template tag -->
+                <img src="{% static 'images/ig.png' %}" alt="">  <!-- Link to the image using the static template tag -->
+            </div>
+            <div class="resort-name">
+                <h1>Water Terraces Mountain Resort</h1>
+            </div>
+            <div class="return-button">
+                <a href="{% url 'home' %}"><button type="button">Back</button></a>
+            </div>
+        </div>
+        <!-- SECTION 1 -->
+
+        <!-- SECTION 2 -->
+        <!-- IMAGES WITH INTRO -->
+        <div class="section-2">
+            <div class="image">
+                <video autoplay loop muted>
+                  <source src="{% static 'images/terraces.mp4'%}" type="video/mp4">  <!-- Link to the video using the static template tag -->
+                </video>
+              </div>
+            <div class="text">
+                <h1>Longing for <span>Spring</span> Baths?</h1>
+                <p>"Dive into Serene Mountain Springs at our Picturesque Nature Escape!"</p>
+                <a href="{% url 'form_4' %}"><button type="button">Reserve Now</button></a>
+            </div>
+        </div>
+        <!-- SECTION 2 -->
+
+         <!-- SECTION 3 -->
+         <div class="section-3">
+            <div class="image">
+                <img src="{% static 'images/water-terraces.jpg' %}" alt="">  <!-- Link to the image using the static template tag -->
+            </div>
+            <div class="about-info">
+                <h2>About Us</h2>
+                <p>Ka Treasure Water Terraces Falls, in Catang, Argao, is<br>
+                    Argao’s newest tourist attraction. It is a series of <br>
+                   waterfalls, just like the rice terraces, just that this<br>
+                    is water. Ka Treasure is surely a testament of how<br>
+                    beautiful things can be when man works with nature.
+                   </p>
+            </div>
+         </div>
+         <!-- SECTION 3 -->
+
+         <!-- SECTION 4 -->
+         <div class="section-4">
+            <div class="title">
+                <h1>Facilities and Services</h1>
+            </div>
+            <div class="services-info">
+                <div class="service">
+                    <img src="{% static 'images/terraces1.jpg' %}" alt="">  <!-- Link to the image using the static template tag -->
+                    <h4>Refreshing Chills</h4>
+                    <p>"Awaken Your Senses with Refreshing Chills: Dive into Nature's Reviving Embrace!"</p>
+                    
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/terraces2.jpg' %}" alt="">  <!-- Link to the image using the static template tag -->
+                    <h4>Chilled Cascades</h4>
+                    <p>"Embrace the Cool Rush of Chilled Cascades: Nature's Revitalizing Symphony!"</p>
+                    <button type="button" onclick="openForm()">Reservation Fees</button>
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/water-terraces3.jpeg' %}" alt="">  <!-- Link to the image using the static template tag -->
+                    <h4>Cool Streams</h4>
+                    <p>"Drift Away on the Melody of Cool Streams: Experience Tranquility in Nature's Rhythmic Flow!"</p>
+                    
+                </div>
+            </div>
+         </div>
+         <!-- SECTION 4 -->
+
+        <!-- SECTION 5 -->
+        <div class="section-5" id="map-container">
+            <div class="location">
+                <h1>Our Location</h1>
+                <p><i class="material-icons">phone</i>&nbsp;&nbsp;   09685539542</p>
+             <p><svg xmlns="http://www.w3.org/2000/svg" margin-top="-10px" x="0px" y="px" width="30" height="30" viewBox="0 0 50 50">
+               <path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"></path>
+           </svg> &nbsp;Ka Treasure Water Terraces Mountain Resort</p>
+             <p><i class="material-icons">directions</i> &nbsp;&nbsp;  Brgy. Catang, Argao, Southern Cebu</p>
+                <a href="https://www.google.com/maps/place/Ka+Treasure+Water+Terraces+Mountain+Resort/@9.8903281,123.5519905,14z/data=!4m6!3m5!1s0x33abc51d3fd13575:0x23c715c7282b9019!8m2!3d9.8945347!4d123.5434503!16s%2Fg%2F11q8wftgrl?entry=ttu"><button type="button">Location</button></a>
+            </div>
+                <img src="{% static 'images/terraces-map.JPG' %}" alt="">  <!-- Link to the image using the static template tag -->
+        </div>
+        <!-- SECTION 5 -->
+
+         <!-- SECTION 6 -->
+         <div class="section-6">
+            <div class="part-1">
+                <h1>Dive into Discussion</h1>
+                <p>"Engage and Connect with Us to Explore New Ideas!"</p>
+            </div>
+            <div class="part-2">
+                <form method="POST" action="{% url 'submit_form4' %}">
+                    {% csrf_token %}
+                    <div class="name">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+                
+            </div>
+         </div>
+          <!-- SECTION 6 -->
+
+          <!-- FOOTER -->
+          <div class="footer">
+            <div class="first-column">
+              
+            </div>
+            <div class="second-column">
+                <!-- IMAGES TO PARTNERSHIPS LOGOS OF ARGAO  -->
+                <img src="{% static 'images/argao1.png' %}" alt="">  <!-- Link to the image using the static template tag -->
+                <img src="{% static 'images/argao2.png' %}" alt="">  <!-- Link to the image using the static template tag -->
+                <img src="{% static 'images/argao3.png' %}" alt="">  <!-- Link to the image using the static template tag -->
+            </div>
+            <div class="third-column">
+                
+            </div>
+          </div>
+        <!-- FOOTER -->
+
+        <!-- DIALOG MORE INFORMATION -->
+
+
+        <!-- DIALOG MORE INFORMATION -->
+        <div id="dialogForm" class="dialog-form">
+            <div class="header">
+                <h2>Booking Fees and Charges</h2>
+               <button onclick="closeForm()"><img src="{% static 'images/exit.svg' %}" alt=""></button>  <!-- Link to the image using the static template tag -->
+            </div>
+            <div class="info">
+                <h5>Rates and Other Information</h5>
+             <p><em>Entrance Fee:</em> <br><br>
+              Adults: P100 per head <br>
+              Kids: P50 per head <br><br>
+              
+              <em>Note: Bring your own food since no restaurant or <br>
+              store could provide for your needs. </em><br><br>
+              
+              <em>Other Information:</em> <br> <br>
+              Operating hours: 8AM to 5PM daily</p>
+            </div>
+           
+          </div>
+        
+        <!-- DIALOG MORE INFORMATION -->
+
+    </div>
+</body>
+</html>

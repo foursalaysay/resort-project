@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resorts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/resort2.css' %}">
+    {% load static %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <script src="{% static 'js/resort2.js' %}"></script>
+    {% if success_message %}
+    <script>
+        alert("{{ success_message }}");
+    </script>
+{% endif %}
+
+    <div class="resort1" id="resort1">
+        <!-- SECTION 1 -->
+        <!-- SOCIAL MEDIA WITH TITLE -->
+        <div class="section-1">
+            <div class="social">
+                <img src="{% static 'images/facebook.png' %}" alt="">
+                <img src="{% static 'images/twitter.png' %}" alt="">
+                <img src="{% static 'images/ig.png' %}" alt="">
+            </div>
+            <div class="resort-name">
+                <h1>Coal Mountain Resort</h1>
+            </div>
+            <div class="return-button">
+                <a href="{% url 'home' %}"><button type="button">Back</button></a>
+            </div>
+        </div>
+        <!-- SECTION 1 -->
+
+        <!-- SECTION 2 -->
+        <!-- IMAGES WITH INTRO -->
+        <div class="section-2">
+            <div class="image" style="background-image: url({% static 'images/coal-cover.jpg' %});"></div>
+            <div class="text">
+                <h1>Craving <span>Mountain</span> Bliss?</h1>
+                <p>"Discover Tranquil Bliss amidst Majestic Mountain Peaks at our Nature Retreat!"</p>
+                <a href="{% url 'form_2' %}"><button type="button" >Reserve Now</button></a>
+            </div>
+        </div>
+        <!-- SECTION 2 -->
+
+         <!-- SECTION 3 -->
+         <div class="section-3">
+            <div class="image">
+                <img src="{% static 'images/coal-cover.jpg' %}" alt="">
+            </div>
+            <div class="about-info">
+                <h2>About Us</h2>
+                <p>Coal Mountain Resort is not a mountain with coal. <br>
+                    However, it is a cool resort as it is situated on <br>
+                    top of Argao’s mountain. It is cool in all respects <br>
+                    – environment, temperature, atmosphere, and resort’s features. <br></p>
+            </div>
+         </div>
+         <!-- SECTION 3 -->
+
+         <!-- SECTION 4 -->
+         <div class="section-4">
+            <div class="title">
+                <h1>Facilities and Services</h1>
+            </div>
+            <div class="services-info">
+                <div class="service">
+                    <img src="{% static 'images/coal1.JPG' %}" alt="">
+                    <h4>Idyllic Escapade</h4>
+                    <p>"Ascend to Cool Elevation: <br> Tranquility at Coal Mountain Resort!"</p>
+                    
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/coal2.jpg' %}" alt="">
+                    <h4>Serenity Haven</h4>
+                    <p>"Unwind in Nature's Air-Conditioned Haven: <br> Coal Mountain Resort, Where Coolness Prevails!"</p>
+                    <button type="button" onclick="openForm()">Reservation Fees</button>
+                </div>
+                <div class="service">
+                    <img src="{% static 'images/coal3.jpg' %}" alt="">
+                    <h4>Majestic Refuge</h4>
+                    <p>"Escape to the Ultimate Cool Retreat: <br> Coal Mountain Resort, Where Chill Vibes Await!"</p>
+                    
+                </div>
+            </div>
+         </div>
+         <!-- SECTION 4 -->
+
+        <!-- SECTION 5 -->
+        <div class="section-5" id="map-container">
+            <div class="location">
+                <h1>Our Location</h1>
+                <p><i class="material-icons">phone</i> &nbsp;&nbsp; 09222648069</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" margin-top="-10px" x="0px" y="px" width="30" height="30" viewBox="0 0 50 50">
+              <path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"></path>
+          </svg> &nbsp; Coal Mountain Resort</p>
+            <p><i class="material-icons">directions</i>  &nbsp; &nbsp;Linut-od, Argao, Cebu</p>
+                <a href="https://www.google.com/maps/place/Coal+Mountain+Resort/@9.8896945,123.4926121,15z/data=!4m2!3m1!1s0x0:0x3c5a0a4c845a1345?sa=X&ved=2ahUKEwi0uajd273_AhWy8jgGHfIYAzIQ_BJ6BAgmEAc"><button type="button">Location</button></a>
+            </div>
+                <img src="{% static 'images/coal-map.JPG' %}" alt="">
+        </div>
+        <!-- SECTION 5 -->
+
+         <!-- SECTION 6 -->
+         <div class="section-6">
+            <div class="part-1">
+                <h1>Connect with us</h1>
+                <p>"Curious about our resort or eager to share your thoughts? <br>
+                    Feel free to reach out!"</p>
+            </div>
+            <div class="part-2">
+                <form method="POST" action="{% url 'submit_form2' %}">
+                    {% csrf_token %}
+                    <div class="name">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+         </div>
+          <!-- SECTION 6 -->
+
+          <!-- FOOTER -->
+          <div class="footer">
+            <div class="first-column">
+              
+            </div>
+            <div class="second-column">
+                <!-- IMAGES TO PARTNERSHIPS LOGOS OF ARGAO  -->
+                <img src="{% static 'images/argao1.png' %}" alt="">
+                <img src="{% static 'images/argao2.png' %}" alt="">
+                <img src="{% static 'images/argao3.png' %}" alt="">
+            </div>
+            <div class="third-column">
+                
+            </div>
+          </div>
+        <!-- FOOTER -->
+
+        <!-- DIALOG MORE INFORMATION -->
+
+
+        <!-- DIALOG MORE INFORMATION -->
+        <div id="dialogForm" class="dialog-form">
+            <div class="header">
+                <h2>Booking Fees and Charges</h2>
+               <button onclick="closeForm()"><img src="{% static 'images/exit.svg' %}" alt=""></button>
+            </div>
+            <div class="info">
+                <h5>Facilities & Services</h5>
+            <p>● Entrance Fee: 150 Pesos. This includes a Day Tour to a Mini Zoo, Hanging Bridge, and swimming pool usage <br> <br>
+              ● Cable Car: 100 Pesos per guest and ride <br><br>
+              ● Zipline: 150 Pesos per guest and ride <br><br>
+              ● KTV is available in the resto-bar area. <br><br>
+              ● Corkage (not applicable yet) <br><br>
+              Mini Zoo (local animals including birds, monkeys, snakes, etc.) <br><br>
+              ● Hanging Bridge (bamboo bridge high above enough for you to see the tops of the trees and more magnificent views of the nearby mountains) <br><br>
+              ● Swimming Pool (two pools are available)<br><br>
+              ● Cottages</p><br>
+              <br><br>
+              
+            <p><strong>Non-Aircon Rooms </strong><br><br><br>
+              ● 2 Twin Beds (1,000 Pesos): for 4 guests, no en-suite bathroom, with TV <br><br>
+              ● 2 Twin Beds (1,200 Pesos): for 4 guests, with bathroom, no TV <br><br>
+              ● 2 Twin Beds (1,500 Pesos): for 4 guests, with bathroom, cable TV <br><br>
+              ● Common-shared Bed (1,500 Pesos): for 6 guests, with bathroom, local TV stations <br><br>
+              ● Bahay Kubo (1 Twin Bed with louting): for 1,000 Pesos; no bathroom <br><br> <br>
+              
+              <strong>Air-conditioned Rooms</strong> <br><br><br>
+              ● Deluxe Room (3,000 Pesos): with breakfast <br><br>
+              ● Standard Room (2,000/2,500 Pesos): with breakfast, size and other features vary <br><br>
+            </div>
+           
+          </div>
+        
+        <!-- DIALOG MORE INFORMATION -->
+
+    </div>
+</body>
+</html>

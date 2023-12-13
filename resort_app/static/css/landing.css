@@ -1,0 +1,687 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
+body{
+    height: 140vh;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('C:\Users\LENOVO\Downloads') format('Allura') 
+}
+
+.home-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+  height: auto;
+  gap: 0;
+}
+
+.container {
+  position: relative;
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .inner-container {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    scrollbar-width: none; /* Hide scrollbar for modern browsers */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  }
+  
+  .inner-container::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar for Chrome, Safari, and Opera */
+  }
+  
+  #scrolling-image {
+    width: 100%;
+  }
+  
+  .line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 250px;
+    margin-top: -60px;
+    width: 1200px;
+    border: 1px solid black;
+  }
+
+  hr{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+  }
+
+  .header-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-family: 'Poppins', cursive;
+    width: 100%;
+  }
+
+  .header-text h1{
+    color: black;
+    font-weight: 900;
+    font-size: 70px;
+    font-family: 'allura' ;
+  }
+
+  /*---------- ------ CAROUSEL STYLING ------------------- */
+  .resort-carousel-container{
+    height: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 40px 0;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    background-color: gray;
+    background-blend-mode: multiply;
+    background-size: cover;
+    color:white;
+  }
+  .carousel{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+
+  .carousel-container{
+    height: 600px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 20px;
+  }
+
+  .carousel-card{
+    height: 550px;
+    width: 800px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0 0 20px gray;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid white;
+  }
+  .carousel-card.show {
+    display: flex;
+    margin: 10px;
+    gap: 10px;
+  }
+  
+  .carousel-card.slide-next {
+    transform: translateX(200%);
+  }
+  
+  .carousel-card.slide-prev {
+    transform: translateX(-200%);
+  }
+
+.carousel-info{
+  display: flex;
+	flex-direction: row;
+  align-items: center;
+  justify-content:center;
+}
+  .carousel-info img{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 280px;
+    width: 330px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px gray;
+  }
+
+  .carousel-info .info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    font-family: 'Poppins';
+    margin-left: 30px;
+  }
+
+  .carousel-info .info h1{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 45px;
+  }
+
+  .carousel-info .info p{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .card-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 120px;
+  }
+
+  .card-content .card-button{
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Poppins';
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .card-content .card-button a{
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Poppins';
+    color: white;
+  }
+
+  .card-content .card-button a:hover{
+    color: black;
+  }
+
+  .card-content .card-button:hover{
+    color: black;
+    background-color: white;
+  }
+
+  .card-content h3{
+    font-size: 25px;
+    font-family: 'Poppins';
+    margin-left: 10px;
+  }
+.detail-button{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.detail-button button{
+    height: 50px;
+    width: 580px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-family: 'Poppins';
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+  }
+
+  .detail-button button:hover{
+    color: black;
+    background-color: white;
+  }
+
+  .detail-button img{
+    height: 35px;
+    width: 35px;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid white;
+    color: white;
+    background-color: white;
+    box-shadow: #555;
+  }
+
+  .carousel-controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 900px;
+    margin-top: -400px;
+    overflow: hidden;
+    padding-bottom: 100px;
+  }
+
+  .prev-btn{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    border-radius: 50px;
+  }
+  
+  .next-btn{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-size: 50px;
+    border-radius: 50px;
+  }
+
+  .carousel-controls .carousel-btn{
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+    padding: 10px;
+    border: none;
+    background-color: white;
+    box-shadow: 10px rgb(211, 211, 211);
+    cursor: pointer;
+    
+  }
+
+  .carousel-controls .carousel-btn:hover{
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 11px rgba(0, 0, 0, 0.5);
+  }
+
+
+    /*---------------- CAROUSEL STYLING ------------------- */
+    
+    /* ----------------- RESORT DETAILS  ------------------- */
+    .resort-detail{
+      display: none;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: row;
+      height: 800px;
+      width: 100%;
+      margin: 40px 0;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid black;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      transform: translateY(0);
+    }
+
+
+    .resort1{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+    
+    }
+
+    /* ----------------------- RESORT CARD -------------------------- */
+
+    .resort-card{
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 730px;
+      width: 25%;
+     margin-left: 20px;
+     gap: 3px;
+     overflow: hidden;
+    }
+
+    .resort-card img{
+      height: 280px;
+      width: 380px;
+      border-radius: 20px;
+    }
+
+    .resort-card h2{
+      font-family: 'poppins';
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .resort-card button{
+      height: 60px;
+      width: 350px;
+      border-radius: 20px;
+      font: 20px 'poppins';
+      background-color: black;
+      color: white;
+    }
+
+    .resort-card .contact{
+      height: 250px;
+      width: 380px;
+      margin-top: 10px;
+      margin-left: 10px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+
+    .resort-card .contact p{
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 10px;
+      font: 16px 'poppins';
+    }
+
+
+    /* ----------------------- RESORT CARD -------------------------- */
+
+    /* ----------------------- RESORT DETAILS -------------------------- */
+    .resort-card-detail{
+      height: 700px;
+      width: 1300px;
+      padding: 20px;
+
+    }
+
+    .header{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      flex-direction: row;
+      gap: 300px;
+      margin-bottom: 10px;
+      margin-left: -80px;
+    }
+
+    .resort-card-detail h3{
+      font: 60px 'poppins';
+      margin: 10px;
+    }
+
+    .resort-card-detail button{
+      height: 50px;
+      width:150px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-family: 'Poppins';
+      background-color: black;
+      color: white;
+      margin-top: 30px;
+    }
+    .resort-card-detail button:hover{
+      background-color: white;
+      color: black;
+    }
+
+    .resort-card-detail h5{
+      font: 40px 'poppins';
+      margin: 10px;
+    }
+
+    .resort-card-detail p{
+      font: 25px 'poppins';
+      margin: 10px;
+    }
+
+    .my-button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 120px;
+      gap: 30px;
+    }
+    .my-button button{
+      height: 50px;
+      width:100px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-family: 'Poppins';
+      background-color: black;
+      color: white;
+    }
+    .my-button button:hover{
+      background-color: white;
+      color: black;
+    }
+    
+
+
+    /* ----------------------- RESORT DETAILS -------------------------- */
+
+    /* ----------------------  JSJS DETAILS  ---------------------------- */
+    .detail1{
+      display: flex;
+      height: 400px;
+      width: 1200px;
+    }
+    
+    .detail2 {
+      display: none;
+      height: 400px;
+      width: 1200px;
+    }
+    /* ----------------------  JSJS DETAILS  ---------------------------- */
+
+    /* ----------------------  COAL MOUNTAIN DETAILS  ---------------------------- */
+    .two-detail1{
+      display: flex;
+      height: 400px;
+      width: 1200px;
+      transition: opacity 0.5s ease-in-out;
+      flex-direction: column;
+    }
+
+    .two-detail2{
+      display: none;
+      height: 400px;
+      width: 1200px;
+      transition: opacity 0.5s ease-in-out;
+      flex-direction: column;
+    }
+
+    .two-detail3{
+      display: none;
+      height: 400px;
+      width: 1200px;
+      transition: opacity 0.5s ease-in-out;
+      flex-direction: column;
+    }
+
+    .show-detail {
+  display: flex;
+}
+
+.three-detail1{
+  display: flex;
+      height: 400px;
+      width: 1200px;
+      transition: opacity 0.5s ease-in-out;
+      flex-direction: column;
+}
+
+.three-detail2{
+  display: none;
+      height: 400px;
+      width: 1200px;
+      transition: opacity 0.5s ease-in-out;
+      flex-direction: column;
+}
+.four-detail1{
+  display: flex;
+}
+    .four-detail2 {
+      display: none;
+    }
+
+      /* ----------------------  COAL MOUNTAIN DETAILS  ---------------------------- */
+
+/*------------------ FOOTER DESIGN ------------------------ */
+
+.footer{
+  height: 50vh;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 30px;
+
+}
+
+.footer .first-column{
+  height: 43vh;
+  width: 500px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  font-family: 'poppins';
+}
+
+.footer .first-column h3{
+  font-size: 30px;
+  color: white;
+}
+
+.footer .first-column p{
+  font-size: 15px;
+  color: white;
+}
+
+.footer .second-column{
+  height: 43vh;
+  width: 500px;
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.footer .second-column img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+
+.footer .third-column{
+  height: 40vh;
+  width: 500px;
+  display: flex;
+}
+
+
+/* ----------------   CHECKDATE    -------------------- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.modal-content {
+  width: 450px;
+  height: 380px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.modal-content h1 {
+  margin-top: 0;
+  font: 30px 'poppins';
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+}
+.modal-content label{
+  font: 20px 'poppins';
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+.modal-content input[type="date"] {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 2px solid black;
+  height: 50px;
+  width: 400px;
+  font: 20px 'poppins';
+}
+
+.modal-content button {
+  height: 60px;
+  width: 250px;
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  font: 22px 'Calibri';
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.modal-content button:hover{
+  background-color: white;
+  color: black;
+}
+
+.check-out::placeholder{
+  font:20px "poppins";
+}
+/* ----------------   CHECKDATE    -------------------- */
+
+/* ----------------   FOOTER       */

@@ -1,0 +1,128 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Terraces Reservation</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form-water.css' %}">
+</head>
+<body style="background-image: url({% static 'images/form-water.jpg' %});">
+    <div class="form-container">
+        <h1>Secure Your Perfect Getaway Today!</h1>
+        <form id="reservation-form" action="{% url 'reservation_submit4' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" name="full-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="contact-number">Contact Number:</label>
+                    <input type="tel" id="contact-number" name="contact-number" required>
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="check-in-date">Check-in Date:</label>
+                    <input type="date" id="check-in-date" name="check-in-date" required>
+                </div>
+                <div class="input-group">
+                    <label for="check-out-date">Check-out Date:</label>
+                    <input type="date" id="check-out-date" name="check-out-date" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="number-of-guests">Number of Guests:</label>
+                    <input type="number" id="number-of-guests" name="number-of-guests" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="room-type">Room Type:</label>
+                    <div class="room-type-grid">
+                        <label for="overnight-room">
+                            <input type="checkbox" id="Overnight Room" name="room-type" value="Overnight Room" data-price="1400"> Overnight Room - 1400 (Good for 2)
+                        </label>
+                        <label for="aircon-room">
+                            <input type="checkbox" id="Aircon Room" name="room-type" value="Aircon Room" data-price="2000"> Aircon Room - 2000 (Good for 2)
+                        </label>
+                        <label for="roomfordayuse-room">
+                            <input type="checkbox" id="Room for day use" name="room-type" value="Room for day use" data-price="1200"> Room for day use - 1200
+                        </label>
+                        <label for="barkada-room">
+                            <input type="checkbox" id="Barkada Room" name="room-type" value="Barkada Room" data-price="0"> Barkada Room - 500 per Head
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="mode-of-payment">Mode of Payment:</label>
+                    <select id="mode-of-payment" name="mode-of-payment" required>
+                        <option value="">Select Payment Mode</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Gcash">Gcash</option>
+                        <option value="Credit Card">Credit Card</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="total-amount">Total Amount:</label>
+                    <input type="text" id="total-amount" name="total-amount" readonly>
+                </div>
+            </div>
+            <div class="form-grid">
+                <input type="submit" value="Reserve">
+                <a href="{% url 'resort_4' %}">Cancel Reservation</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('reservation-form');
+        const totalAmountInput = document.getElementById('total-amount');
+
+        form.addEventListener('input', function () {
+            const checkInDate = new Date(form['check-in-date'].value);
+            const checkOutDate = new Date(form['check-out-date'].value);
+            const roomTypeElements = form.querySelectorAll('input[name="room-type"]:checked');
+            const numberOfGuests = parseInt(form['number-of-guests'].value, 10);
+
+            const oneDay = 24 * 60 * 60 * 1000; // Milliseconds in a day
+            const numberOfNights = Math.round((checkOutDate - checkInDate) / oneDay);
+
+            let totalRoomPrice = 0;
+            roomTypeElements.forEach(function (roomTypeElement) {
+                const roomPrice = parseFloat(roomTypeElement.dataset.price);
+                totalRoomPrice += roomPrice;
+            });
+
+            let additionalGuestCharges = 0;
+            if (!isNaN(numberOfGuests) && numberOfGuests > 0) {
+                additionalGuestCharges = numberOfGuests * 500;
+            }
+
+            const totalAmount = totalRoomPrice * numberOfNights + additionalGuestCharges;
+
+            totalAmountInput.value = isNaN(totalAmount) ? "" : totalAmount.toFixed(2);
+        });
+
+        
+        
+    </script>
+</body>
+</html>
